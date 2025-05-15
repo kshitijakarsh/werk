@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import TaperedLinesBackground from "@/components/HeroBackground";
+import Navbar from "@/components/Navbar";
 
 export default function Home() {
   const [isVisible, setIsVisible] = useState(false);
@@ -15,6 +16,7 @@ export default function Home() {
 
   return (
     <div className="relative w-full min-h-screen flex justify-center items-center px-4 overflow-hidden">
+      <Navbar />
       <div className="absolute inset-0 z-0">
         <TaperedLinesBackground />
       </div>
@@ -84,18 +86,13 @@ export default function Home() {
                 top: 0;
                 left: 0;
                 position: absolute;
-                animation: moveLine 4s linear infinite;
-                box-shadow: 0 0 8px 1px rgba(255, 255, 255, 0.4);
-              }
+                animation: moveLine 8s linear infinite;
 
-              .button-line {
-                width: 32px;
-                height: 1px;
-                top: 0;
-                left: 0;
-                position: absolute;
-                animation: moveLine 4s linear infinite;
-                box-shadow: 0 0 8px 1px rgba(255, 255, 255, 0.4);
+                background-color: white;
+                box-shadow: 0 0 4px rgba(255, 255, 255, 0.4),
+                  0 0 8px rgba(255, 255, 255, 0.6),
+                  0 0 12px rgba(255, 255, 255, 0.8),
+                  0 0 16px rgba(0, 136, 255, 0.5);
               }
 
               @keyframes moveLine {
