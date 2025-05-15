@@ -1,103 +1,182 @@
-import Image from "next/image";
+"use client";
+import { useEffect, useState } from "react";
+import TaperedLinesBackground from "@/components/HeroBackground";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [isVisible, setIsVisible] = useState(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <div className="relative w-full min-h-screen flex justify-center items-center px-4 overflow-hidden">
+      <div className="absolute inset-0 z-0">
+        <TaperedLinesBackground />
+      </div>
+
+      <div className="absolute inset-0 z-0 bg-gradient-radial from-gray-900/20 to-transparent"></div>
+
+      <div
+        className={`relative z-10 flex flex-row items-center space-x-28 max-w-6xl w-full transition-opacity duration-1000 ${
+          isVisible ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        <div className="text-white max-w">
+          <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-gray-400">
+            Write Tweets That Sound Like You
+          </h1>
+          <h1 className="text-4xl font-bold mt-2 text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-gray-400">
+            — Only Better
+          </h1>
+
+          <p className="mt-6 text-gray-400 max-w-md">
+            Our AI enhances your unique voice while keeping your authentic
+            style. Stand out with tweets that capture attention and drive
+            engagement.
+          </p>
+
+          <button className="mt-8 px-6 py-3 bg-black text-white font-medium rounded-md border border-gray-800 hover:shadow-lg hover:shadow-white/10 transition-all duration-300 relative overflow-hidden group">
+            <span className="relative z-10">Get Started</span>
+            <span className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-70">
+              <span className="absolute bg-white button-line"></span>
+            </span>
+          </button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        <>
+          <div className="relative p-8 rounded-lg max-w-sm w-full bg-black/70 backdrop-blur-sm overflow-hidden border border-gray-800 shadow-xl shadow-black/30">
+            <div className="absolute inset-0 bg-gradient-to-br from-gray-800/20 to-gray-900/10"></div>
+
+            <div className="relative z-10">
+              <h2 className="text-white text-xl font-semibold mb-4">
+                Start Writing Better Tweets
+              </h2>
+              <p className="text-gray-300 mb-6">
+                Transform your ideas into engaging tweets that maintain your
+                unique voice and connect with your audience.
+              </p>
+
+              <div className="space-y-4">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="w-full px-4 py-3 bg-gray-900/70 border border-gray-700 rounded-md text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/20"
+                />
+                <button className="w-full py-3 bg-black text-white font-medium rounded-md border border-gray-800 hover:shadow-lg transition-all duration-300 relative overflow-hidden">
+                  <span className="relative z-10">Join Waitlist</span>
+                </button>
+              </div>
+            </div>
+
+            <span className="absolute top-0 left-0 w-full h-full pointer-events-none">
+              <span className="absolute bg-white line"></span>
+            </span>
+
+            <style jsx>{`
+              .line {
+                width: 32px;
+                height: 1px;
+                top: 0;
+                left: 0;
+                position: absolute;
+                animation: moveLine 4s linear infinite;
+                box-shadow: 0 0 8px 1px rgba(255, 255, 255, 0.4);
+              }
+
+              .button-line {
+                width: 32px;
+                height: 1px;
+                top: 0;
+                left: 0;
+                position: absolute;
+                animation: moveLine 4s linear infinite;
+                box-shadow: 0 0 8px 1px rgba(255, 255, 255, 0.4);
+              }
+
+              @keyframes moveLine {
+                0% {
+                  top: 0;
+                  left: 0;
+                  width: 32px;
+                  height: 1px;
+                  transform: rotate(0deg);
+                }
+                23.99% {
+                  top: 0;
+                  left: calc(100% - 16px);
+                  width: 32px;
+                  height: 1px;
+                  transform: rotate(0deg);
+                }
+                24% {
+                  top: 0;
+                  left: calc(100% - 3px);
+                  width: 1px;
+                  height: 32px;
+                  transform: rotate(0deg);
+                }
+                48% {
+                  top: calc(100% - 16px);
+                  left: calc(100% - 3px);
+                  width: 1px;
+                  height: 32px;
+                  transform: rotate(0deg);
+                }
+                48.01% {
+                  top: calc(100% - 3px);
+                  left: calc(100% - 3px);
+                  width: 32px;
+                  height: 1px;
+                  transform: rotate(0deg);
+                }
+                72% {
+                  top: calc(100% - 3px);
+                  left: 0;
+                  width: 32px;
+                  height: 1px;
+                  transform: rotate(0deg);
+                }
+                72.01% {
+                  top: calc(100% - 16px);
+                  left: 0;
+                  width: 1px;
+                  height: 32px;
+                  transform: rotate(0deg);
+                }
+                96% {
+                  top: 0;
+                  left: 0;
+                  width: 1px;
+                  height: 32px;
+                  transform: rotate(0deg);
+                }
+                96.01% {
+                  top: 0;
+                  left: 0;
+                  width: 32px;
+                  height: 1px;
+                  transform: rotate(0deg);
+                }
+                100% {
+                  top: 0;
+                  left: 0;
+                  width: 32px;
+                  height: 1px;
+                  transform: rotate(0deg);
+                }
+              }
+            `}</style>
+          </div>
+        </>
+      </div>
+
+      <div className="absolute top-1/4 left-1/4 w-24 h-24 rounded-full bg-gray-500/5 blur-2xl"></div>
+      <div className="absolute bottom-1/3 right-1/5 w-32 h-32 rounded-full bg-gray-400/5 blur-3xl"></div>
     </div>
   );
 }
