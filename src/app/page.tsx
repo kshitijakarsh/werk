@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import TaperedLinesBackground from "@/components/HeroBackground";
 import Navbar from "@/components/Navbar";
 import TweetGenerationFlow from "@/components/TweetGenerationFlow";
+import { BorderBeam } from "@/components/magicui/border-beam";
 
 export default function Home() {
   const [isVisible, setIsVisible] = useState(false);
@@ -55,6 +56,11 @@ export default function Home() {
           <>
             <div className="relative p-8 rounded-lg max-w-sm w-full bg-black/70 backdrop-blur-sm overflow-hidden border border-gray-800 shadow-xl shadow-black/30">
               <div className="absolute inset-0 bg-gradient-to-br from-gray-800/20 to-gray-900/10"></div>
+              <BorderBeam
+                className="w-full h-full"
+                colorFrom="#888888"
+                colorTo="#ffffff"
+              />
 
               <div className="relative z-10">
                 <h2 className="text-white text-xl font-semibold mb-4">
@@ -76,100 +82,6 @@ export default function Home() {
                   </button>
                 </div>
               </div>
-
-              <span className="absolute top-0 left-0 w-full h-full pointer-events-none">
-                <span className="absolute bg-white line"></span>
-              </span>
-
-              <style jsx>{`
-                .line {
-                  width: 32px;
-                  height: 1px;
-                  top: 0;
-                  left: 0;
-                  position: absolute;
-                  animation: moveLine 8s linear infinite;
-
-                  background-color: white;
-                  box-shadow: 0 0 4px rgba(255, 255, 255, 0.4),
-                    0 0 8px rgba(255, 255, 255, 0.6),
-                    0 0 12px rgba(255, 255, 255, 0.8),
-                    0 0 16px rgba(0, 136, 255, 0.5);
-                }
-
-                @keyframes moveLine {
-                  0% {
-                    top: 0;
-                    left: 0;
-                    width: 32px;
-                    height: 1px;
-                    transform: rotate(0deg);
-                  }
-                  23.99% {
-                    top: 0;
-                    left: calc(100% - 16px);
-                    width: 32px;
-                    height: 1px;
-                    transform: rotate(0deg);
-                  }
-                  24% {
-                    top: 0;
-                    left: calc(100% - 3px);
-                    width: 1px;
-                    height: 32px;
-                    transform: rotate(0deg);
-                  }
-                  48% {
-                    top: calc(100% - 16px);
-                    left: calc(100% - 3px);
-                    width: 1px;
-                    height: 32px;
-                    transform: rotate(0deg);
-                  }
-                  48.01% {
-                    top: calc(100% - 3px);
-                    left: calc(100% - 3px);
-                    width: 32px;
-                    height: 1px;
-                    transform: rotate(0deg);
-                  }
-                  72% {
-                    top: calc(100% - 3px);
-                    left: 0;
-                    width: 32px;
-                    height: 1px;
-                    transform: rotate(0deg);
-                  }
-                  72.01% {
-                    top: calc(100% - 16px);
-                    left: 0;
-                    width: 1px;
-                    height: 32px;
-                    transform: rotate(0deg);
-                  }
-                  96% {
-                    top: 0;
-                    left: 0;
-                    width: 1px;
-                    height: 32px;
-                    transform: rotate(0deg);
-                  }
-                  96.01% {
-                    top: 0;
-                    left: 0;
-                    width: 32px;
-                    height: 1px;
-                    transform: rotate(0deg);
-                  }
-                  100% {
-                    top: 0;
-                    left: 0;
-                    width: 32px;
-                    height: 1px;
-                    transform: rotate(0deg);
-                  }
-                }
-              `}</style>
             </div>
           </>
         </div>
